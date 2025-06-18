@@ -3,14 +3,12 @@ import { projects } from "../../data/projects";
 import NeonBackground from "../../components/NeonBackground";
 import { Metadata } from "next";
 
-interface PageProps {
+type Props = {
   params: { id: string };
   searchParams?: { [key: string]: string | string[] | undefined };
-}
+};
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = projects.find((p) => p.id === params.id);
 
   if (!project) {
@@ -24,7 +22,7 @@ export async function generateMetadata({
   };
 }
 
-export default function ProjectPage({ params }: PageProps) {
+export default function ProjectPage({ params }: Props) {
   const project = projects.find((p) => p.id === params.id);
 
   if (!project) {
