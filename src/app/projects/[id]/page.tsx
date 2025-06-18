@@ -3,14 +3,12 @@ import { projects } from "../../data/projects";
 import NeonBackground from "../../components/NeonBackground";
 import { Metadata } from "next";
 
-// このファイル内でのみ使用するため、`export` は不要です
-type Props = {
+// メタデータ生成関数：引数に直接型を定義
+export async function generateMetadata({
+  params,
+}: {
   params: { id: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
-
-// メタデータ生成は非同期の可能性があるため `async` のまま
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+}): Promise<Metadata> {
   const project = projects.find((p) => p.id === params.id);
 
   if (!project) {
@@ -21,22 +19,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${project.title} | 周宇辰のポートフォリオ`,
-    description: project.description, // descriptionも追加するとSEOに効果的です
+    description: project.description,
   };
 }
 
-// (推奨) ビルド時に静的なパスを生成します
+// 静的パス生成関数
 export function generateStaticParams() {
   return projects.map((project) => ({
     id: project.id,
   }));
 }
 
-// ページコンポーネントの async を削除
-export default function ProjectPage({ params }: Props) {
+// ページコンポーネント：引数に直接型を定義
+export default function ProjectPage({ params }: { params: { id: string } }) {
   const project = projects.find((p) => p.id === params.id);
 
-  // プロジェクトが見つからない場合の表示 (早期リターン)
   if (!project) {
     return (
       <div className="min-h-screen text-white relative">
@@ -68,13 +65,8 @@ export default function ProjectPage({ params }: Props) {
         >
           ← Back
         </Link>
-        <div className="prose prose-invert max-w-none">
-          {/* h1やpなどのタグはProjectComponent内で定義されている想定です。
-              もしそうでない場合は、ここでスタイルを適用します。
-            */}
-          <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
-          <ProjectComponent />
-        </div>
+        <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
+        <ProjectComponent />
       </div>
     </div>
   );
