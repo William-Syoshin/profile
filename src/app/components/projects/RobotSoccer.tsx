@@ -26,7 +26,7 @@ const RobotSoccer = () => {
                 src="/project1-1.jpg"
                 alt="プロジェクト画像1"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <p className="text-gray-300 mt-2">実際の機体の様子</p>
@@ -43,7 +43,7 @@ const RobotSoccer = () => {
                 src="/project1-2.jpg"
                 alt="プロジェクト画像2"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <p className="text-gray-300 mt-2">操作の様子</p>
@@ -57,7 +57,7 @@ const RobotSoccer = () => {
                 src="/project1-3.jpg"
                 alt="プロジェクト画像3"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <p className="text-gray-300 mt-2">プロジェクトメンバー</p>
