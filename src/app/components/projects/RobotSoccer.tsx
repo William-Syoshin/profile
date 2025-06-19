@@ -21,7 +21,7 @@ const RobotSoccer = () => {
         </h2>
         <div className="space-y-4">
           <div>
-            <div className="relative h-100 w-100 rounded-lg overflow-hidden">
+            <div className="relative h-64 w-full rounded-lg overflow-hidden">
               <Image
                 src="/project1-1.jpg"
                 alt="プロジェクト画像1"
@@ -38,7 +38,7 @@ const RobotSoccer = () => {
             </p>
           </div>
           <div>
-            <div className="relative h-100 w-100 rounded-lg overflow-hidden">
+            <div className="relative h-64 w-full rounded-lg overflow-hidden">
               <Image
                 src="/project1-2.jpg"
                 alt="プロジェクト画像2"
@@ -52,7 +52,7 @@ const RobotSoccer = () => {
             </p>
           </div>
           <div>
-            <div className="relative h-150 rounded-lg overflow-hidden">
+            <div className="relative h-64 w-full rounded-lg overflow-hidden">
               <Image
                 src="/project1-3.jpg"
                 alt="プロジェクト画像3"
