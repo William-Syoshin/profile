@@ -497,19 +497,29 @@ function Game() {
 }
 
 export default function MinigamePage() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   // ルール説明文
   const ruleText = (
     <div
       style={{
-        position: "absolute",
-        top: "10%",
-        left: "20px",
+        position: isMobile ? undefined : "absolute",
+        top: isMobile ? undefined : "0%",
+        left: isMobile ? undefined : "20px",
         zIndex: 10,
         backgroundColor: "rgba(0,0,0,0.5)",
         padding: "10px",
         borderRadius: "5px",
         fontSize: "14px",
         maxWidth: 320,
+        margin: isMobile ? "0px auto 0 auto" : "60px auto 0 auto",
+        width: isMobile ? "90%" : undefined,
       }}
     >
       <h2 style={{ margin: 0, marginBottom: "10px", fontSize: "16px" }}>
@@ -531,26 +541,28 @@ export default function MinigamePage() {
   const controlPanel = (
     <div
       style={{
-        position: "absolute",
-        top: "50%",
-        right: "40px",
-        transform: "translateY(-50%)",
+        position: isMobile ? undefined : "absolute",
+        top: isMobile ? undefined : "50%",
+        right: isMobile ? undefined : "40px",
+        transform: isMobile ? undefined : "translateY(-50%)",
         zIndex: 10,
         backgroundColor: "rgba(0,0,0,0.5)",
         padding: "20px 16px",
         borderRadius: "10px",
         display: "flex",
-        flexDirection: "column",
+        flexDirection: isMobile ? "row" : "column",
         alignItems: "center",
         gap: 12,
-        minWidth: 120,
+        minWidth: isMobile ? undefined : 120,
+        margin: isMobile ? "24px auto" : undefined,
+        width: isMobile ? "90%" : undefined,
+        justifyContent: isMobile ? "center" : undefined,
       }}
     >
-      {/* 平面ボタン */}
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
+          flexDirection: isMobile ? "column" : "column",
           alignItems: "center",
           gap: 4,
         }}
@@ -585,11 +597,10 @@ export default function MinigamePage() {
           {ArrowDownIcon}
         </button>
       </div>
-      {/* 高さボタン（縦並びで↑↓） */}
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
+          flexDirection: isMobile ? "column" : "column",
           alignItems: "center",
           gap: 4,
           marginTop: 16,
@@ -605,14 +616,48 @@ export default function MinigamePage() {
           {ArrowDownIcon}
         </button>
       </div>
-      {/* 発射ボタン */}
       <button onClick={() => fireKey("Enter")} style={launchButtonStyle}>
         <span>発射！</span>
       </button>
     </div>
   );
 
-  return (
+  return isMobile ? (
+    <div
+      className="w-screen min-h-screen text-white flex flex-col items-center"
+      style={{ overflowY: "auto", height: "100vh" }}
+    >
+      <NeonBackground />
+      {ruleText}
+      <div
+        style={{
+          width: "100%",
+          height: 260,
+          maxWidth: 400,
+          margin: "2px auto 0 auto",
+          position: "relative",
+          flexShrink: 0,
+        }}
+      >
+        <Canvas
+          camera={{ position: [0, 5, 18], fov: 45 }}
+          gl={{ alpha: true }}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Suspense fallback={null}>
+            <Game />
+          </Suspense>
+        </Canvas>
+      </div>
+      <div style={{ marginBottom: 8, width: "100%" }}>{controlPanel}</div>
+    </div>
+  ) : (
     <div className="w-screen h-screen text-white">
       <NeonBackground />
       {ruleText}
