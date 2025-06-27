@@ -65,7 +65,7 @@ const AIMovie: React.FC = () => {
         <h1 className="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
           AIが創り出す、写真からの物語
         </h1>
-        <div className="relative h-64 w-full rounded-lg overflow-hidden">
+        <div className="relative h-96 w-full rounded-lg overflow-hidden">
           <Image
             src="/project3-1-.jpg"
             alt="プロジェクト画像"
@@ -82,7 +82,7 @@ const AIMovie: React.FC = () => {
         <h2 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
           制作の舞台裏
         </h2>
-        <div className="relative h-64 w-full rounded-lg overflow-hidden">
+        <div className="relative h-96 w-full rounded-lg overflow-hidden">
           <Image
             src="/project3-2-.jpg"
             alt="プロジェクト画像"
@@ -94,7 +94,7 @@ const AIMovie: React.FC = () => {
           また、私自身のLoRA（Low-Rank
           Adaptation）を制作しました。LoRAとは自身のモデルのことです。このモデルを使用することで、実際に行なっていない動作も生成することができます。
         </p>
-        <div className="relative h-64 w-full rounded-lg overflow-hidden">
+        <div className="relative h-96 w-full rounded-lg overflow-hidden">
           <Image
             src="/project3-3-.jpg"
             alt="プロジェクト画像"
