@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans"; // ← この行を追加
 import { GeistMono } from "geist/font/mono"; // ← この行を追加
 import "./globals.css";
+import Header from "./components/Header";
 
 export const metadata: Metadata = {
   title: "周宇辰のポートフォリオ", // あなたのサイトのタイトルに合わせてください
@@ -18,7 +19,10 @@ export default function RootLayout({
       lang="ja"
       className={`${GeistSans.variable} ${GeistMono.variable}`} // ← classNameをこのように変更
     >
-      <body>{children}</body>
+      <body>
+        <Header />
+        <div className="pt-20">{children}</div>
+      </body>
     </html>
   );
 }
