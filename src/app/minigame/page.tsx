@@ -440,13 +440,14 @@ function Game() {
           yDiff <= RING_THICKNESS / 2 + BALL_RADIUS
         ) {
           ringPassed = true;
+          // ここでスコアを即時加算
+          setScore((s) => s + 1);
           return { ...ring, isPassed: true };
         }
       }
       return ring;
     });
     if (ringPassed) {
-      setScore((s) => s + 1);
       setRings(updatedRings);
     }
     setBallPos(newPos);
