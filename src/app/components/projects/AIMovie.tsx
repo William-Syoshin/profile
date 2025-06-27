@@ -10,7 +10,7 @@ const AIMovie: React.FC = () => {
             href="https://youtu.be/BbGHZ0w3r4E"
             target="_blank"
             rel="noopener noreferrer"
-            className="block relative h-96 w-full rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
+            className="block relative h-64 w-full rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
           >
             <Image
               src="/project3-8.jpg"
@@ -65,7 +65,7 @@ const AIMovie: React.FC = () => {
         <h1 className="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
           AIが創り出す、写真からの物語
         </h1>
-        <div className="relative h-96 w-full rounded-lg overflow-hidden">
+        <div className="relative h-64 w-full rounded-lg overflow-hidden">
           <Image
             src="/project3-1.jpg"
             alt="プロジェクト画像"
@@ -82,7 +82,7 @@ const AIMovie: React.FC = () => {
         <h2 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
           制作の舞台裏
         </h2>
-        <div className="relative h-96 w-full rounded-lg overflow-hidden">
+        <div className="relative h-64 w-full rounded-lg overflow-hidden">
           <Image
             src="/project3-2.jpg"
             alt="プロジェクト画像"
@@ -94,7 +94,7 @@ const AIMovie: React.FC = () => {
           また、私自身のLoRA（Low-Rank
           Adaptation）を制作しました。LoRAとは自身のモデルのことです。このモデルを使用することで、実際に行なっていない動作も生成することができます。
         </p>
-        <div className="relative h-96 w-full rounded-lg overflow-hidden">
+        <div className="relative h-64 w-full rounded-lg overflow-hidden">
           <Image
             src="/project3-3.jpg"
             alt="プロジェクト画像"
@@ -112,7 +112,7 @@ const AIMovie: React.FC = () => {
           スチル
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-          <div className="relative h-96 w-full rounded-lg overflow-hidden">
+          <div className="relative h-64 w-full rounded-lg overflow-hidden">
             <Image
               src="/project3-4.jpg"
               alt="プロジェクト画像"
@@ -120,7 +120,7 @@ const AIMovie: React.FC = () => {
               className="object-contain"
             />
           </div>
-          <div className="relative h-96 w-full rounded-lg overflow-hidden">
+          <div className="relative h-64 w-full rounded-lg overflow-hidden">
             <Image
               src="/project3-5.jpg"
               alt="プロジェクト画像"
@@ -128,7 +128,7 @@ const AIMovie: React.FC = () => {
               className="object-contain"
             />
           </div>
-          <div className="relative h-96 w-full rounded-lg overflow-hidden">
+          <div className="relative h-64 w-full rounded-lg overflow-hidden">
             <Image
               src="/project3-6.jpg"
               alt="プロジェクト画像"
@@ -136,7 +136,7 @@ const AIMovie: React.FC = () => {
               className="object-contain"
             />
           </div>
-          <div className="relative h-96 w-full rounded-lg overflow-hidden">
+          <div className="relative h-64 w-full rounded-lg overflow-hidden">
             <Image
               src="/project3-7.jpg"
               alt="プロジェクト画像"
