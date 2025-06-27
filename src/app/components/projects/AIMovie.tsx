@@ -13,7 +13,7 @@ const AIMovie: React.FC = () => {
             className="block relative h-64 w-full rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
           >
             <Image
-              src="/project3-8.jpg"
+              src="/project3-8-.jpg"
               alt="動画サムネイル"
               fill
               className="object-cover"
@@ -67,7 +67,7 @@ const AIMovie: React.FC = () => {
         </h1>
         <div className="relative h-64 w-full rounded-lg overflow-hidden">
           <Image
-            src="/project3-1.jpg"
+            src="/project3-1-.jpg"
             alt="プロジェクト画像"
             fill
             className="object-contain"
@@ -84,7 +84,7 @@ const AIMovie: React.FC = () => {
         </h2>
         <div className="relative h-64 w-full rounded-lg overflow-hidden">
           <Image
-            src="/project3-2.jpg"
+            src="/project3-2-.jpg"
             alt="プロジェクト画像"
             fill
             className="object-contain"
@@ -96,7 +96,7 @@ const AIMovie: React.FC = () => {
         </p>
         <div className="relative h-64 w-full rounded-lg overflow-hidden">
           <Image
-            src="/project3-3.jpg"
+            src="/project3-3-.jpg"
             alt="プロジェクト画像"
             fill
             className="object-contain"
@@ -114,7 +114,7 @@ const AIMovie: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
           <div className="relative h-64 w-full rounded-lg overflow-hidden">
             <Image
-              src="/project3-4.jpg"
+              src="/project3-4-.jpg"
               alt="プロジェクト画像"
               fill
               className="object-contain"
@@ -122,7 +122,7 @@ const AIMovie: React.FC = () => {
           </div>
           <div className="relative h-64 w-full rounded-lg overflow-hidden">
             <Image
-              src="/project3-5.jpg"
+              src="/project3-5-.jpg"
               alt="プロジェクト画像"
               fill
               className="object-contain"
@@ -130,7 +130,7 @@ const AIMovie: React.FC = () => {
           </div>
           <div className="relative h-64 w-full rounded-lg overflow-hidden">
             <Image
-              src="/project3-6.jpg"
+              src="/project3-6-.jpg"
               alt="プロジェクト画像"
               fill
               className="object-contain"
@@ -138,7 +138,7 @@ const AIMovie: React.FC = () => {
           </div>
           <div className="relative h-64 w-full rounded-lg overflow-hidden">
             <Image
-              src="/project3-7.jpg"
+              src="/project3-7-.jpg"
               alt="プロジェクト画像"
               fill
               className="object-contain"
