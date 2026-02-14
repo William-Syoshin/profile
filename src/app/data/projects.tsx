@@ -1,6 +1,7 @@
 import React, { ComponentType } from "react";
 import RobotSoccer from "../components/projects/RobotSoccer";
 import AIMovie from "../components/projects/AIMovie";
+import Hyperchill from "../components/projects/Hyperchill";
 
 const PreparingProject: ComponentType = () => {
   return (
@@ -45,6 +46,15 @@ export const projects: Project[] = [
     link: "/projects/project3",
     technologies: ["AI", "映像処理"],
     component: AIMovie,
+  },
+  {
+    id: "hyperchill",
+    title: "Hyperchill",
+    description: "Hyperchillプロジェクト",
+    thumbnail: "/project4-title.JPG",
+    link: "/projects/hyperchill",
+    technologies: [],
+    component: Hyperchill,
   },
   {
     id: "project2",
