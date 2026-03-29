@@ -3,6 +3,7 @@ import RobotSoccer from "../components/projects/RobotSoccer";
 import AIMovie from "../components/projects/AIMovie";
 import Hyperchill from "../components/projects/Hyperchill";
 import QUTProgram from "../components/projects/QUTProgram";
+import KisekaeCamera from "../components/projects/KisekaeCamera";
 
 const PreparingProject: ComponentType = () => {
   return (
@@ -51,7 +52,7 @@ export const projects: Project[] = [
   {
     id: "hyperchill",
     title: "吉祥寺文化祭",
-    description: "吉祥寺文化祭プロジェクト",
+    description: "百人規模のイベントを主催しました！",
     thumbnail: "/project4-title.JPG",
     link: "/projects/hyperchill",
     technologies: ["イベント主催", "システム開発"],
@@ -60,11 +61,20 @@ export const projects: Project[] = [
   {
     id: "qut",
     title: "工学部海外派遣プログラム",
-    description: "オーストラリア・QUTで一ヶ月強、英語で工学を学び現地学生と交流",
+    description: "オーストラリアのQUTで海外留学",
     thumbnail: "/qut-15.jpg",
     link: "/projects/qut",
     technologies: ["海外留学", "工学", "QUT", "オーストラリア"],
     component: QUTProgram,
+  },
+  {
+    id: "kisekae",
+    title: "着せ替えカメラ",
+    description: "5月祭で公開予定！現在製作中です",
+    thumbnail: "/project5.jpg",
+    link: "/projects/kisekae",
+    technologies: ["五月祭", "カメラ"],
+    component: KisekaeCamera,
   },
   {
     id: "project2",
