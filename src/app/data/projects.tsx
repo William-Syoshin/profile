@@ -2,6 +2,7 @@ import React, { ComponentType } from "react";
 import RobotSoccer from "../components/projects/RobotSoccer";
 import AIMovie from "../components/projects/AIMovie";
 import Hyperchill from "../components/projects/Hyperchill";
+import QUTProgram from "../components/projects/QUTProgram";
 
 const PreparingProject: ComponentType = () => {
   return (
@@ -55,6 +56,15 @@ export const projects: Project[] = [
     link: "/projects/hyperchill",
     technologies: ["イベント主催", "システム開発"],
     component: Hyperchill,
+  },
+  {
+    id: "qut",
+    title: "工学部海外派遣プログラム",
+    description: "オーストラリア・QUTで一ヶ月強、英語で工学を学び現地学生と交流",
+    thumbnail: "/qut-15.jpg",
+    link: "/projects/qut",
+    technologies: ["海外留学", "工学", "QUT", "オーストラリア"],
+    component: QUTProgram,
   },
   {
     id: "project2",
