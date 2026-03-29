@@ -15,15 +15,15 @@ const Hyperchill: React.FC = () => {
 
       <section>
         <h2 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-          Hyperchillとは
+          吉祥寺文化祭とは
         </h2>
         <p className="text-gray-300 leading-relaxed mb-4">
-          Hyperchillは、多様なバックグラウンドを持つ人々が集まり、それぞれのカルチャーを共有できる場所を作ることを目標としたイベントです。
+          吉祥寺文化祭は、多様なバックグラウンドを持つ人々が集まり、それぞれのカルチャーを共有できる場所を作ることを目標としたイベントです。
         </p>
         <div className="relative h-96 w-full rounded-lg overflow-hidden mb-4">
           <Image
             src="/project4-1.jpg"
-            alt="Hyperchillイベント"
+            alt="吉祥寺文化祭イベント"
             fill
             className="object-contain"
           />
@@ -229,24 +229,76 @@ const Hyperchill: React.FC = () => {
           開発したアプリケーション
         </h2>
         <p className="text-gray-300 leading-relaxed mb-4">
-          私はこのイベントの開催・運営にあたって、集金システムと来場者の配置システムを構築しました。
+          私はこのイベントの開催・運営にあたって、Webアプリケーションを一から設計・開発しました。吉祥寺の三会場にまたがるイベントを「一つの脳」として捉え、来場者一人ひとりをニューロン（神経細胞）、カルチャーの交換を細胞の発火と見立てることで、会場全体をリアルタイムに可視化するシステムです。
         </p>
 
         <h3 className="text-xl font-semibold mb-3 text-purple-300 mt-6">
           アプリを作ったきっかけ
         </h3>
         <p className="text-gray-300 leading-relaxed mb-4">
-          一つの共同体としてのイベント。それぞれのカルチャーを持ち寄る個々を神経細胞と見立てて、カルチャーの交換を細胞の発火と見なすことができるという考え方です。どの会場が賑やかさを可視化することで、会場を一つの脳と見立てて、真の意味での共同体を作り出せると考えました。
+          吉祥寺文化祭は三会場同時進行で行われるイベントであり、どの会場が今盛り上がっているのかが来場者には見えにくいという課題がありました。それぞれのカルチャーを持ち寄る個々を神経細胞と見立て、カルチャーの交換を細胞の発火と見なすことで、会場を一つの「生きた脳」として可視化できると考えました。このアイデアを実現するため、リアルタイムで来場者の分布と会話を把握できるアプリを開発しました。
         </p>
 
         <h3 className="text-xl font-semibold mb-3 text-purple-300 mt-6">
-          機能一覧
+          機能① 来場者の会場分布をリアルタイムで把握
         </h3>
-        <ul className="list-disc list-inside space-y-2 text-gray-300 mb-4">
-          <li>PayPayから集金できる機能</li>
-          <li>どこに誰がいるかを把握できる機能</li>
-          <li>もう一人の開発者が、会場にマイクを置いて、来場者の会話を読み込んで、その要約を送るというシステムとの連携</li>
-        </ul>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          参加者はアプリに自分のアカウントを登録し、現在いる会場を選択することで、三会場それぞれの来場者数がリアルタイムで一覧表示されます。EOS BASEMENT・MOVEMENT・ASTROの各会場に何人いるかを一目で確認できました。
+        </p>
+        <div className="flex justify-center mb-6">
+          <div className="relative w-64 rounded-2xl overflow-hidden shadow-lg">
+            <Image
+              src="/project4-app1.png"
+              alt="来場者会場分布画面"
+              width={256}
+              height={554}
+              className="w-full"
+            />
+          </div>
+        </div>
+
+        <h3 className="text-xl font-semibold mb-3 text-purple-300 mt-6">
+          機能② 会場ごとの来場者一覧
+        </h3>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          会場名をタップすると、その会場にいる参加者のプロフィールが一覧で表示されます。アイコンや名前、アカウント名が表示されるため、「あの人は今どこにいるか」をその場で確認でき、友人との合流や新たな出会いのきっかけを生みました。
+        </p>
+        <div className="flex justify-center mb-6">
+          <div className="relative w-64 rounded-2xl overflow-hidden shadow-lg">
+            <Image
+              src="/project4-app2.png"
+              alt="会場別来場者一覧画面"
+              width={256}
+              height={554}
+              className="w-full"
+            />
+          </div>
+        </div>
+
+        <h3 className="text-xl font-semibold mb-3 text-purple-300 mt-6">
+          機能③ 会場の会話をAIがリアルタイム要約
+        </h3>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          もう一人の開発者が各会場にマイクを設置し、来場者の会話音声をリアルタイムで収集。AIがその内容を自動で要約し、アプリ上に配信するシステムと連携しました。会場の「今の空気」をテキストで感じ取ることができ、どの会場が面白い話題で盛り上がっているかをアプリから確認できます。
+        </p>
+        <div className="flex justify-center mb-6">
+          <div className="relative w-64 rounded-2xl overflow-hidden shadow-lg">
+            <Image
+              src="/project4-app3.png"
+              alt="AI会話要約画面"
+              width={256}
+              height={554}
+              className="w-full"
+            />
+          </div>
+        </div>
+
+        <h3 className="text-xl font-semibold mb-3 text-purple-300 mt-6">
+          機能④ PayPayによる集金システム
+        </h3>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          入場料の徴収はPayPayと連携した集金システムで行いました。来場者はアプリ上から支払いを完了でき、運営側はリアルタイムで入金状況を確認できる仕組みを構築しました。これにより現金管理の手間を省き、スムーズな入場フローを実現しました。
+        </p>
       </section>
 
       <section>

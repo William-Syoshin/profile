@@ -33,7 +33,7 @@ export const projects: Project[] = [
     id: "project1",
     title: "ロボットサッカー",
     description: "五月祭でロボットサッカーに挑戦しました！",
-    thumbnail: "/project1.jpg",
+    thumbnail: "/project1-1.jpg",
     link: "/projects/project1",
     technologies: ["電子工作", "五月祭"],
     component: RobotSoccer,
@@ -49,11 +49,11 @@ export const projects: Project[] = [
   },
   {
     id: "hyperchill",
-    title: "Hyperchill",
-    description: "Hyperchillプロジェクト",
+    title: "吉祥寺文化祭",
+    description: "吉祥寺文化祭プロジェクト",
     thumbnail: "/project4-title.JPG",
     link: "/projects/hyperchill",
-    technologies: [],
+    technologies: ["イベント主催", "システム開発"],
     component: Hyperchill,
   },
   {
