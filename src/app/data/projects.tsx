@@ -64,7 +64,7 @@ export const projects: Project[] = [
     description: "オーストラリアのQUTで海外留学",
     thumbnail: "/qut-15.jpg",
     link: "/projects/qut",
-    technologies: ["海外留学", "工学", "QUT", "オーストラリア"],
+    technologies: ["海外留学"],
     component: QUTProgram,
   },
   {
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     description: "5月祭で公開予定！現在製作中です",
     thumbnail: "/project5.jpg",
     link: "/projects/kisekae",
-    technologies: ["五月祭", "カメラ"],
+    technologies: ["五月祭"],
     component: KisekaeCamera,
   },
   {
