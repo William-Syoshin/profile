@@ -81,23 +81,6 @@ export default function Home() {
             <ProjectGrid projects={projects} />
           </div>
 
-          {/* SNSリンクセクション */}
-          <div className="flex justify-center gap-6">
-            <a
-              href="https://www.instagram.com/l_ysergi?igsh=MWdyYmJwNXYwbWxxMQ%3D%3D&utm_source=qr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full hover:opacity-90 transition-opacity shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_20px_rgba(168,85,247,0.7)]"
-            >
-              <Image
-                src="/instagram.svg"
-                alt="Instagram"
-                width={24}
-                height={24}
-              />
-              <span>Instagram</span>
-            </a>
-          </div>
         </div>
       </main>
     </div>
