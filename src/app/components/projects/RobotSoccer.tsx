@@ -154,7 +154,7 @@ const RobotSoccer = () => {
                 <li><span className="text-purple-300 font-medium">高木くん</span>　― プロジェクトリーダー・フィールド部分設計</li>
                 <li><span className="text-purple-300 font-medium">山田くん</span>　― 機体製作・キッカー/ドリブラー製作</li>
                 <li><span className="text-purple-300 font-medium">中村くん</span>　― 機体製作・TouchDesignerとの連携・キックモーション実装</li>
-                <li><span className="text-purple-300 font-medium">私</span>　　　　― ゴール部設計・点数集計システム作成</li>
+                <li><span className="text-purple-300 font-medium">私</span>　　　　― 機体製作・ゴール部設計・点数集計システム作成</li>
                 <li><span className="text-purple-300 font-medium">太田くん</span>　― TouchDesignerによる関節座標取得システム構築</li>
               </ul>
             </div>

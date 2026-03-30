@@ -9,7 +9,7 @@ const Hyperchill: React.FC = () => {
           プロジェクト概要
         </h2>
         <p className="text-gray-300 leading-relaxed mb-4">
-          私は大型イベントの運営、集金システムの構築を担当しました。
+          私は大型イベントの主催・運営、集金システムの構築を担当しました。
         </p>
       </section>
 

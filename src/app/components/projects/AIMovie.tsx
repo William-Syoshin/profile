@@ -49,7 +49,7 @@ const AIMovie: React.FC = () => {
           />
         </div>
         <p className="text-gray-300 leading-relaxed mb-4">
-          WaytoAGIは中国最大の生成AIコミュニティです。AIファンや研究者、クリエイターが一堂に会する場として成長を続け、2周年を迎えた節目に初の国際イベントを東京で開催しました。
+          WaytoAGIは中国最大級の生成AIコミュニティです。AIファンや研究者、クリエイターが一堂に会する場として成長を続け、2周年を迎えた節目に初の国際イベントを東京で開催しました。
         </p>
 
         <h2 className="text-2xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
@@ -89,7 +89,7 @@ const AIMovie: React.FC = () => {
           多数の企業が協賛し、1Fロビーにはスポンサーバナーや出展ブースが立ち並びました。
         </p>
         <p className="text-gray-300 leading-relaxed mb-4">
-          そのような場に、私たちはAIによる映像制作という形で参加しました。北京を拠点に活動するアーティスト・神思远監督のプロジェクトに加わり、AIを用いて写真から映像を生成するという手法で、この国際カンファレンスに作品を送り出しました。
+          そのような場に、私たちはAIによる映像制作という形で参加しました。北京を拠点に活動するアーティスト・神思远監督のプロジェクトに加わり、AIを用いて写真から映像を生成するという手法で、この国際カンファレンスに作品を送り出しました。技術面での貢献にとどまらず、自身が映像の主演を務めることで、作品そのものの制作に深く携わりました。
         </p>
 
         <h2 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
