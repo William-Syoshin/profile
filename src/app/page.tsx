@@ -26,7 +26,7 @@ export default function Home() {
             <h1 className="text-1xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
               Shu Ushin
             </h1>
-            <p className="text-gray-300">東京大学工学部精密工学科B3</p>
+            <p className="text-gray-300">東京大学工学部精密工学科B4</p>
           </div>
 
           {/* 経歴セクション */}
@@ -80,7 +80,6 @@ export default function Home() {
             </h2>
             <ProjectGrid projects={projects} />
           </div>
-
         </div>
       </main>
     </div>
