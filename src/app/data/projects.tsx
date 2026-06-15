@@ -69,11 +69,11 @@ export const projects: Project[] = [
   },
   {
     id: "kisekae",
-    title: "着せ替えカメラ",
-    description: "5月祭で公開予定！現在製作中です",
-    thumbnail: "/project5.jpg",
+    title: "AI着せ替えカメラ",
+    description: "五月祭でAI着せ替えカメラに挑戦しました！",
+    thumbnail: "/kisekae-thumbnail.jpg",
     link: "/projects/kisekae",
-    technologies: ["五月祭"],
+    technologies: ["AI", "五月祭", "コンピュータビジョン"],
     component: KisekaeCamera,
   },
   {
