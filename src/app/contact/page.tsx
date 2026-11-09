@@ -53,10 +53,14 @@ const ContactPage = () => {
 
     try {
       const result = await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_w8g3x7h", // EmailJSのサービスID
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_zyzvrvf", // EmailJSのサービスID
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_w0p4xa5", // EmailJSのテンプレートID
         {
-          from_email: email,
+          from_email: email.trim(),
+          email: email.trim(),
+          name: email.trim(),
+          title: t("ポートフォリオからのお問い合わせ", "Portfolio inquiry"),
+          time: new Date().toISOString(),
           message: message,
           to_email: CONTACT_EMAIL,
         },
