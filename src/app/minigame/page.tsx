@@ -2,9 +2,10 @@
 
 import React, { Suspense, useState, useRef, useEffect, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Text } from "@react-three/drei";
+import { Html, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import NeonBackground from "../components/NeonBackground";
+import { useLanguage } from "../components/LanguageProvider";
 
 // --- Configuration from C code ---
 const BALL_RADIUS = 0.3;
@@ -319,7 +320,7 @@ const launchButtonHoverStyle: React.CSSProperties = {
   borderColor: "#fff",
 };
 
-function Game() {
+function Game({ scoreLabel, clearLabel }: { scoreLabel: string; clearLabel: string }) {
   const [ballPos, setBallPos] = useState(new THREE.Vector3(0, 0, 0));
   const [isAiming, setIsAiming] = useState(true);
   const [rings, setRings] = useState<RingData[]>(createInitialRings());
@@ -332,6 +333,12 @@ function Game() {
   // キーボード操作
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        e.target instanceof HTMLElement &&
+        e.target.closest("button, a, input, textarea, select")
+      ) {
+        return;
+      }
       if (isAiming) {
         if (e.key.startsWith("Arrow")) e.preventDefault();
         setBallPos((prev) => {
@@ -480,24 +487,25 @@ function Game() {
         visible={isAiming && ballPos.length() > 0}
       />
       {/* スコア表示 */}
-      <Text
+      <Html
         position={[0, -1.9, 0]}
-        rotation={[-Math.PI / 2, 0, 0]}
-        fontSize={0.5}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
+        center
+        zIndexRange={[1, 0]}
+        style={{ pointerEvents: "none", whiteSpace: "nowrap" }}
       >
-        {score >= rings.length
-          ? "GAME CLEAR"
-          : `SCORE: ${score} / ${rings.length}`}
-      </Text>
+        <div role="status" className="rounded-full bg-black/70 px-3 py-1 text-sm font-semibold text-white">
+          {score >= rings.length
+            ? clearLabel
+            : `${scoreLabel}: ${score} / ${rings.length}`}
+        </div>
+      </Html>
       <OrbitControls />
     </>
   );
 }
 
 export default function MinigamePage() {
+  const { t } = useLanguage();
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -511,7 +519,7 @@ export default function MinigamePage() {
     <div
       style={{
         position: isMobile ? undefined : "absolute",
-        top: isMobile ? undefined : "0%",
+        top: isMobile ? undefined : "20px",
         left: isMobile ? undefined : "20px",
         zIndex: 10,
         backgroundColor: "rgba(0,0,0,0.5)",
@@ -519,17 +527,25 @@ export default function MinigamePage() {
         borderRadius: "5px",
         fontSize: "14px",
         maxWidth: 320,
-        margin: isMobile ? "0px auto 0 auto" : "60px auto 0 auto",
+        margin: isMobile ? "0 auto" : 0,
         width: isMobile ? "90%" : undefined,
       }}
     >
       <h2 style={{ margin: 0, marginBottom: "10px", fontSize: "16px" }}>
-        ルール説明
+        {t("ルール説明", "How to play")}
       </h2>
-      <p style={{ margin: "4px 0" }}>ボールを打ち出して、リングを狙おう！</p>
-      <p style={{ margin: "4px 0" }}>平面ボタンで前後左右を調整</p>
-      <p style={{ margin: "4px 0" }}>高さボタンで高さを調整</p>
-      <p style={{ margin: "4px 0" }}>発射ボタンで発射！</p>
+      <p style={{ margin: "4px 0" }}>
+        {t("ボールを打ち出して、リングを狙おう！", "Launch the ball and aim for the rings!")}
+      </p>
+      <p style={{ margin: "4px 0" }}>
+        {t("平面ボタンで前後左右を調整", "Use the Position arrows to move forward, back, left, or right.")}
+      </p>
+      <p style={{ margin: "4px 0" }}>
+        {t("高さボタンで高さを調整", "Use the Height arrows to move up or down.")}
+      </p>
+      <p style={{ margin: "4px 0" }}>
+        {t("発射ボタンで発射！", "Press Launch to fire the ball!")}
+      </p>
     </div>
   );
 
@@ -552,6 +568,7 @@ export default function MinigamePage() {
         borderRadius: "10px",
         display: "flex",
         flexDirection: isMobile ? "row" : "column",
+        flexWrap: isMobile ? "wrap" : undefined,
         alignItems: "center",
         gap: 12,
         minWidth: isMobile ? undefined : 120,
@@ -569,10 +586,11 @@ export default function MinigamePage() {
         }}
       >
         <div style={{ color: "#a78bfa", marginBottom: 2, fontSize: 20 }}>
-          平面
+          {t("平面", "Position")}
         </div>
         <button
           onClick={() => fireKey("ArrowUp")}
+          aria-label={t("ボールを前に移動", "Move the ball forward")}
           style={{ width: 40, height: 40, marginBottom: 4 }}
         >
           {ArrowUpIcon}
@@ -580,12 +598,14 @@ export default function MinigamePage() {
         <div style={{ display: "flex", flexDirection: "row", gap: 4 }}>
           <button
             onClick={() => fireKey("ArrowLeft")}
+            aria-label={t("ボールを左に移動", "Move the ball left")}
             style={{ width: 40, height: 40 }}
           >
             {ArrowLeftIcon}
           </button>
           <button
             onClick={() => fireKey("ArrowRight")}
+            aria-label={t("ボールを右に移動", "Move the ball right")}
             style={{ width: 40, height: 40 }}
           >
             {ArrowRightIcon}
@@ -593,6 +613,7 @@ export default function MinigamePage() {
         </div>
         <button
           onClick={() => fireKey("ArrowDown")}
+          aria-label={t("ボールを後ろに移動", "Move the ball back")}
           style={{ width: 40, height: 40, marginTop: 4 }}
         >
           {ArrowDownIcon}
@@ -608,25 +629,35 @@ export default function MinigamePage() {
         }}
       >
         <div style={{ color: "#a78bfa", marginBottom: 2, fontSize: 20 }}>
-          高さ
+          {t("高さ", "Height")}
         </div>
-        <button onClick={() => fireKey("h")} style={{ width: 40, height: 40 }}>
+        <button
+          onClick={() => fireKey("h")}
+          aria-label={t("ボールの高さを上げる", "Raise the ball")}
+          style={{ width: 40, height: 40 }}
+        >
           {ArrowUpIcon}
         </button>
-        <button onClick={() => fireKey("l")} style={{ width: 40, height: 40 }}>
+        <button
+          onClick={() => fireKey("l")}
+          aria-label={t("ボールの高さを下げる", "Lower the ball")}
+          style={{ width: 40, height: 40 }}
+        >
           {ArrowDownIcon}
         </button>
       </div>
-      <button onClick={() => fireKey("Enter")} style={launchButtonStyle}>
-        <span>発射！</span>
+      <button
+        onClick={() => fireKey("Enter")}
+        style={{ ...launchButtonStyle, marginTop: isMobile ? 8 : 24, flexShrink: 0 }}
+      >
+        <span>{t("発射！", "Launch!")}</span>
       </button>
     </div>
   );
 
   return isMobile ? (
     <div
-      className="w-screen min-h-screen text-white flex flex-col items-center"
-      style={{ overflowY: "auto", height: "100vh" }}
+      className="relative w-full min-h-[calc(100dvh-7rem)] sm:min-h-[calc(100dvh-5rem)] text-white flex flex-col items-center"
     >
       <NeonBackground />
       {ruleText}
@@ -641,6 +672,7 @@ export default function MinigamePage() {
         }}
       >
         <Canvas
+          aria-label={t("ボールを発射してリングを狙うミニゲーム", "A minigame where you launch a ball at rings")}
           camera={{ position: [0, 5, 18], fov: 45 }}
           gl={{ alpha: true }}
           style={{
@@ -652,24 +684,28 @@ export default function MinigamePage() {
           }}
         >
           <Suspense fallback={null}>
-            <Game />
+            <Game scoreLabel={t("スコア", "Score")} clearLabel={t("クリア！", "All rings cleared!")} />
           </Suspense>
         </Canvas>
       </div>
       <div style={{ marginBottom: 8, width: "100%" }}>{controlPanel}</div>
     </div>
   ) : (
-    <div className="w-screen h-screen text-white">
+    <div
+      className="relative w-full text-white"
+      style={{ height: "calc(100dvh - 80px)", minHeight: 480 }}
+    >
       <NeonBackground />
       {ruleText}
       {controlPanel}
       <Canvas
+        aria-label={t("ボールを発射してリングを狙うミニゲーム", "A minigame where you launch a ball at rings")}
         camera={{ position: [0, 5, 18], fov: 45 }}
         gl={{ alpha: true }}
         style={{ position: "absolute", top: 0, left: 0 }}
       >
         <Suspense fallback={null}>
-          <Game />
+          <Game scoreLabel={t("スコア", "Score")} clearLabel={t("クリア！", "All rings cleared!")} />
         </Suspense>
       </Canvas>
     </div>

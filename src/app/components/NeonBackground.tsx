@@ -1,5 +1,13 @@
 import React from "react";
 
+// Stable positions prevent the stars from moving when the language changes,
+// and keep the server and browser render identical.
+const starValue = (index: number, offset: number) => {
+  let value = Math.imul(index + 1, 374761393) + Math.imul(offset + 1, 668265263);
+  value = Math.imul(value ^ (value >>> 13), 1274126177);
+  return ((value ^ (value >>> 16)) >>> 0) / 4294967296;
+};
+
 const NeonBackground = () => {
   return (
     <div className="fixed inset-0 -z-10">
@@ -10,10 +18,10 @@ const NeonBackground = () => {
             key={i}
             className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              opacity: Math.random() * 0.5 + 0.5,
+              left: `${starValue(i, 0) * 100}%`,
+              top: `${starValue(i, 1) * 100}%`,
+              animationDelay: `${starValue(i, 2) * 5}s`,
+              opacity: starValue(i, 3) * 0.5 + 0.5,
             }}
           />
         ))}

@@ -1,24 +1,11 @@
-import React, { ComponentType } from "react";
+import type { ComponentType } from "react";
+import type { Language } from "../components/LanguageProvider";
+import PreparingProject from "../components/projects/PreparingProject";
 import RobotSoccer from "../components/projects/RobotSoccer";
 import AIMovie from "../components/projects/AIMovie";
 import Hyperchill from "../components/projects/Hyperchill";
 import QUTProgram from "../components/projects/QUTProgram";
 import KisekaeCamera from "../components/projects/KisekaeCamera";
-
-const PreparingProject: ComponentType = () => {
-  return (
-    <div className="space-y-8">
-      <section>
-        <h2 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-          準備中
-        </h2>
-        <p className="text-gray-300 leading-relaxed">
-          現在、新しいプロジェクトを準備中です。
-        </p>
-      </section>
-    </div>
-  );
-};
 
 export interface Project {
   id: string;
@@ -86,3 +73,44 @@ export const projects: Project[] = [
     component: PreparingProject,
   },
 ];
+
+
+const englishProjects: Record<string, Pick<Project, "title" | "description" | "technologies">> = {
+  project1: {
+    title: "Robot Soccer",
+    description: "I helped build a robot soccer exhibit for the University of Tokyo’s May Festival.",
+    technologies: ["Electronics", "May Festival"],
+  },
+  project3: {
+    title: "Kiyosumi-Shirakawa",
+    description: "A film made with AI.",
+    technologies: ["AI", "Video processing"],
+  },
+  hyperchill: {
+    title: "Kichijoji Culture Festival",
+    description: "I organized an event for around 100 people.",
+    technologies: ["Event organizing", "Software development"],
+  },
+  qut: {
+    title: "Engineering Study Abroad Program",
+    description: "I studied at Queensland University of Technology in Australia.",
+    technologies: ["Study abroad"],
+  },
+  kisekae: {
+    title: "AI Virtual Try-On Camera",
+    description: "I worked on an AI virtual try-on camera for the May Festival.",
+    technologies: ["AI", "May Festival", "Computer vision"],
+  },
+  project2: {
+    title: "Coming Soon",
+    description: "Details coming soon.",
+    technologies: [],
+  },
+};
+
+export function getProjects(language: Language): Project[] {
+  return language === "ja" ? projects : projects.map(project => ({
+    ...project,
+    ...englishProjects[project.id],
+  }));
+}

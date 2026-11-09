@@ -1,7 +1,11 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { useLanguage } from "../LanguageProvider";
 
 const AIMovie: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <div className="space-y-8">
       <section>
@@ -14,7 +18,7 @@ const AIMovie: React.FC = () => {
           >
             <Image
               src="/project3-8-.jpg"
-              alt="動画サムネイル"
+              alt={t("動画サムネイル", "Watch the film")}
               fill
               className="object-cover"
             />
@@ -34,31 +38,31 @@ const AIMovie: React.FC = () => {
       </section>
       <section>
         <h1 className="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-          WaytoAGI グローバルAIカンファレンス 2025 参加
+          {t("WaytoAGI グローバルAIカンファレンス 2025 参加", "Taking part in the WaytoAGI Global AI Conference 2025")}
         </h1>
 
         <h2 className="text-2xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-          WaytoAGI とは
+          {t("WaytoAGI とは", "About WaytoAGI")}
         </h2>
         <div className="relative h-80 w-full rounded-lg overflow-hidden mb-4">
           <Image
             src="/project2-agi.jpg"
-            alt="WaytoAGI 2周年記念イベント"
+            alt={t("WaytoAGI 2周年記念イベント", "WaytoAGI’s second anniversary event")}
             fill
             className="object-contain"
           />
         </div>
         <p className="text-gray-300 leading-relaxed mb-4">
-          WaytoAGIは中国最大級の生成AIコミュニティです。AIファンや研究者、クリエイターが一堂に会する場として成長を続け、2周年を迎えた節目に初の国際イベントを東京で開催しました。
+          {t("WaytoAGIは中国最大級の生成AIコミュニティです。AIファンや研究者、クリエイターが一堂に会する場として成長を続け、2周年を迎えた節目に初の国際イベントを東京で開催しました。", "WaytoAGI is one of China’s largest generative AI communities, bringing together enthusiasts, researchers, and creators. To mark its second anniversary, it held its first international event in Tokyo.")}
         </p>
 
         <h2 className="text-2xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-          当日の様子
+          {t("当日の様子", "At the conference")}
         </h2>
         <div className="relative h-80 w-full rounded-lg overflow-hidden mb-4">
           <Image
             src="/project2-agi1.jpg"
-            alt="WaytoAGI カンファレンス 広告"
+            alt={t("WaytoAGI カンファレンス 広告", "WaytoAGI conference poster")}
             fill
             className="object-contain"
           />
@@ -66,40 +70,40 @@ const AIMovie: React.FC = () => {
         <div className="relative h-80 w-full rounded-lg overflow-hidden mb-4">
           <Image
             src="/project2-agi2.jpg"
-            alt="桜美林大学 新宿キャンパス"
+            alt={t("桜美林大学 新宿キャンパス", "J. F. Oberlin University’s Shinjuku campus")}
             fill
             className="object-contain"
           />
         </div>
         <p className="text-gray-300 leading-relaxed mb-4">
-          2025年6月7〜8日、桜美林大学新宿キャンパス 創新館を貸し切って開催。新宿から徒歩圏内の大久保・百人町という国際色豊かなエリアにあるこのキャンパスに、AI研究者・映像ディレクター・スタートアップなど世界各地から多数の登壇者と参加者が集結しました。
+          {t("2025年6月7〜8日、桜美林大学新宿キャンパス 創新館を貸し切って開催。新宿から徒歩圏内の大久保・百人町という国際色豊かなエリアにあるこのキャンパスに、AI研究者・映像ディレクター・スタートアップなど世界各地から多数の登壇者と参加者が集結しました。", "The event was held on June 7–8, 2025, using the whole Soshinkan building at J. F. Oberlin University’s Shinjuku campus. Located in the multicultural Okubo and Hyakunincho area, within walking distance of Shinjuku, the campus welcomed AI researchers, film directors, startup teams, and other participants from around the world.")}
         </p>
         <p className="text-gray-300 leading-relaxed mb-4">
-          セッションは主に中国語・英語で進行し、複数の教室に大型LEDウォールが設置されるなど、中国のカンファレンスならではの圧倒的なスケールで展開。Snoop DoggのMV監督を務めたYves Dalviez氏やComfyUI専門家など、AI×クリエイティブの最前線を担う登壇者による講演が行われました。
+          {t("セッションは主に中国語・英語で進行し、複数の教室に大型LEDウォールが設置されるなど、中国のカンファレンスならではの圧倒的なスケールで展開。Snoop DoggのMV監督を務めたYves Dalviez氏やComfyUI専門家など、AI×クリエイティブの最前線を担う登壇者による講演が行われました。", "Most sessions were in Chinese or English. Large LED walls filled several classrooms, giving the event the scale of a major conference in China. Speakers included ComfyUI specialists and Yves Dalviez, who has directed a music video for Snoop Dogg. They spoke about their work with AI in creative production.")}
         </p>
         <div className="relative h-80 w-full rounded-lg overflow-hidden mb-4">
           <Image
             src="/project2-agi3.jpg"
-            alt="WaytoAGI 協賛会社一覧"
+            alt={t("WaytoAGI 協賛会社一覧", "WaytoAGI conference sponsors")}
             fill
             className="object-contain"
           />
         </div>
         <p className="text-gray-300 leading-relaxed mb-4">
-          多数の企業が協賛し、1Fロビーにはスポンサーバナーや出展ブースが立ち並びました。
+          {t("多数の企業が協賛し、1Fロビーにはスポンサーバナーや出展ブースが立ち並びました。", "The conference had support from many companies, with sponsor banners and exhibition booths lining the ground-floor lobby.")}
         </p>
         <p className="text-gray-300 leading-relaxed mb-4">
-          そのような場に、私たちはAIによる映像制作という形で参加しました。北京を拠点に活動するアーティスト・神思远監督のプロジェクトに加わり、AIを用いて写真から映像を生成するという手法で、この国際カンファレンスに作品を送り出しました。技術面での貢献にとどまらず、自身が映像の主演を務めることで、作品そのものの制作に深く携わりました。
+          {t("そのような場に、私たちはAIによる映像制作という形で参加しました。北京を拠点に活動するアーティスト・神思远監督のプロジェクトに加わり、AIを用いて写真から映像を生成するという手法で、この国際カンファレンスに作品を送り出しました。技術面での貢献にとどまらず、自身が映像の主演を務めることで、作品そのものの制作に深く携わりました。", "Our contribution was an AI-generated film. We joined a project led by Beijing-based artist and director Shen Siyuan, using AI to turn photographs into moving images for a film presented at the conference. Alongside the technical work, I played the lead, so I was involved both behind the scenes and on screen.")}
         </p>
 
         <h2 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-          神思远監督について
+          {t("神思远監督について", "About the director, Shen Siyuan")}
         </h2>
         <p className="text-gray-300 leading-relaxed mb-4">
-          1983年生まれ、北京在住の現代アーティスト。ファッションフォトグラファーとしてのキャリアを経て、2016年より独立アーティストとして活動を本格化。写真、映像、グラフィックデザイン、テキストを横断しながら、「日常の感情」を視覚的に記録・再構築する独自のスタイルを確立する。
+          {t("1983年生まれ、北京在住の現代アーティスト。ファッションフォトグラファーとしてのキャリアを経て、2016年より独立アーティストとして活動を本格化。写真、映像、グラフィックデザイン、テキストを横断しながら、「日常の感情」を視覚的に記録・再構築する独自のスタイルを確立する。", "Shen Siyuan is a Beijing-based contemporary artist born in 1983. After working as a fashion photographer, he began focusing on his independent art practice in 2016. He works across photography, film, graphic design, and writing to record and reimagine everyday emotions.")}
         </p>
         <p className="text-gray-300 leading-relaxed mb-4">
-          代表作に、花をモチーフに感情の揺らぎと個人的記憶を綴った写真集《卑鄙的花》（2020）、映像インスタレーションと立体物を組み合わせた個展《荒糖》（2020）など。
+          {t("代表作に、花をモチーフに感情の揺らぎと個人的記憶を綴った写真集《卑鄙的花》（2020）、映像インスタレーションと立体物を組み合わせた個展《荒糖》（2020）など。", "His works include the photobook Beibi de Hua (2020), which uses flowers to explore shifting emotions and personal memories, and the solo exhibition Huang Tang (2020), which combined video installations with three-dimensional objects.")}
         </p>
         <div className="flex gap-4 mt-6">
           <a
@@ -115,61 +119,61 @@ const AIMovie: React.FC = () => {
 
       <section>
         <h1 className="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-          全映像を「写真」だけから創る
+          {t("全映像を「写真」だけから創る", "Making a film entirely from photographs")}
         </h1>
         <div className="relative h-96 w-full rounded-lg overflow-hidden">
           <Image
             src="/project3-1-.jpg"
-            alt="プロジェクト画像"
+            alt={t("プロジェクト画像", "Image from the film project")}
             fill
             className="object-contain"
           />
         </div>
         <p className="text-gray-300 leading-relaxed mb-4 mt-4">
-          本作品の最大の特徴は、<strong className="text-white">映像の一コマも動画素材を使用していない</strong>という点です。作中に登場する全ての映像は、静止画（写真）のみを出発点として生成されています。
+          {t(<>本作品の最大の特徴は、<strong className="text-white">映像の一コマも動画素材を使用していない</strong>という点です。作中に登場する全ての映像は、静止画（写真）のみを出発点として生成されています。</>, <>The film uses <strong className="text-white">no video footage at all</strong>. Every sequence started as a still photograph.</>)}
         </p>
         <p className="text-gray-300 leading-relaxed mb-4">
-          神思远監督が撮影した写真をAIに学習させ、そこから動きのある映像フレームを生成。それらを繋ぎ合わせることで、まるで実際に撮影したかのような映像体験を作り出しています。写真から映像へ——この変換プロセス全体をAIが担っている点が、本作の核心にあります。
+          {t("神思远監督が撮影した写真をAIに学習させ、そこから動きのある映像フレームを生成。それらを繋ぎ合わせることで、まるで実際に撮影したかのような映像体験を作り出しています。写真から映像へ——この変換プロセス全体をAIが担っている点が、本作の核心にあります。", "The AI learned from photographs taken by Shen Siyuan and generated a sequence of frames to bring them to life. We then joined those frames together to create sequences that look as though they were filmed with a camera. AI handles the entire transformation from still photograph to moving image, which is the central idea behind the film.")}
         </p>
       </section>
 
       <section>
         <h2 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-          制作の舞台裏
+          {t("制作の舞台裏", "Behind the scenes")}
         </h2>
         <div className="relative h-96 w-full rounded-lg overflow-hidden">
           <Image
             src="/project3-2-.jpg"
-            alt="プロジェクト画像"
+            alt={t("プロジェクト画像", "Image from the film project")}
             fill
             className="object-contain"
           />
         </div>
         <p className="text-gray-300 leading-relaxed mt-4 mb-4">
-          映像生成ツールには<strong className="text-white">ComfyUI</strong>を使用しました。写真からAIが風景・人物・オブジェクトを学習し、新たな画像フレームを次々と生成。現実と非現実が融合した独自の映像世界が、一枚の写真から広がっていきます。
+          {t(<>映像生成ツールには<strong className="text-white">ComfyUI</strong>を使用しました。写真からAIが風景・人物・オブジェクトを学習し、新たな画像フレームを次々と生成。現実と非現実が融合した独自の映像世界が、一枚の写真から広がっていきます。</>, <>We used <strong className="text-white">ComfyUI</strong> to generate the video. The AI learned the scenery, people, and objects in each photograph, then generated new frames one after another. A single photograph could grow into a scene that blended the familiar with the surreal.</>)}
         </p>
         <div className="relative h-96 w-full rounded-lg overflow-hidden">
           <Image
             src="/project3-3-.jpg"
-            alt="プロジェクト画像"
+            alt={t("プロジェクト画像", "Image from the film project")}
             fill
             className="object-contain"
           />
         </div>
         <p className="text-gray-300 leading-relaxed mt-4">
-          さらに、私自身の<strong className="text-white">LoRA（Low-Rank Adaptation）モデル</strong>を独自に制作しました。自分の姿や動きを学習させたこのパーソナルモデルにより、実際には行っていない動作や場所にいる映像も、写真ベースでリアルに生成することが可能になっています。
+          {t(<>さらに、私自身の<strong className="text-white">LoRA（Low-Rank Adaptation）モデル</strong>を独自に制作しました。自分の姿や動きを学習させたこのパーソナルモデルにより、実際には行っていない動作や場所にいる映像も、写真ベースでリアルに生成することが可能になっています。</>, <>I also created a <strong className="text-white">LoRA (Low-Rank Adaptation) model</strong> trained on my own appearance and movements. Using photographs as a starting point, this model could generate realistic video of me doing things I had never done or appearing in places I had never been.</>)}
         </p>
       </section>
 
       <section>
         <h2 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-          スチル
+          {t("スチル", "Film stills")}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
           <div className="relative h-64 w-full rounded-lg overflow-hidden">
             <Image
               src="/project3-4-.jpg"
-              alt="プロジェクト画像"
+              alt={t("プロジェクト画像", "Image from the film project")}
               fill
               className="object-contain"
             />
@@ -177,7 +181,7 @@ const AIMovie: React.FC = () => {
           <div className="relative h-64 w-full rounded-lg overflow-hidden">
             <Image
               src="/project3-5-.jpg"
-              alt="プロジェクト画像"
+              alt={t("プロジェクト画像", "Image from the film project")}
               fill
               className="object-contain"
             />
@@ -185,7 +189,7 @@ const AIMovie: React.FC = () => {
           <div className="relative h-64 w-full rounded-lg overflow-hidden">
             <Image
               src="/project3-6-.jpg"
-              alt="プロジェクト画像"
+              alt={t("プロジェクト画像", "Image from the film project")}
               fill
               className="object-contain"
             />
@@ -193,7 +197,7 @@ const AIMovie: React.FC = () => {
           <div className="relative h-64 w-full rounded-lg overflow-hidden">
             <Image
               src="/project3-7-.jpg"
-              alt="プロジェクト画像"
+              alt={t("プロジェクト画像", "Image from the film project")}
               fill
               className="object-contain"
             />
