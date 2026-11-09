@@ -1,13 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import NeonBackground from "../components/NeonBackground";
 import { useLanguage } from "../components/LanguageProvider";
+import { normalizeEmailJsError, type DeliveryErrorCode } from "./emailjs-error";
+
+const CONTACT_EMAIL = "william236969@gmail.com";
 
 type ContactError =
   | { code: "emailRequired" | "emailInvalid" | "messageRequired" }
-  | { code: "sendFailed"; details?: string };
+  | { code: DeliveryErrorCode };
 
 const ContactPage = () => {
   const { t } = useLanguage();
@@ -18,9 +21,11 @@ const ContactPage = () => {
     "idle" | "success" | "error"
   >("idle");
   const [submitError, setSubmitError] = useState<ContactError | null>(null);
+  const submissionInFlight = useRef(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submissionInFlight.current) return;
     setSubmitStatus("idle");
     setSubmitError(null);
 
@@ -30,7 +35,7 @@ const ContactPage = () => {
       validationError = { code: "emailRequired" };
     } else if (emailInput.validity.typeMismatch) {
       validationError = { code: "emailInvalid" };
-    } else if (!message) {
+    } else if (!message.trim()) {
       validationError = { code: "messageRequired" };
     }
     if (validationError) {
@@ -43,6 +48,7 @@ const ContactPage = () => {
       return;
     }
 
+    submissionInFlight.current = true;
     setIsSubmitting(true);
 
     try {
@@ -52,27 +58,22 @@ const ContactPage = () => {
         {
           from_email: email,
           message: message,
-          to_email: "william236969@gmail.com",
+          to_email: CONTACT_EMAIL,
         },
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "Xq6ye17YZQ0AFtBmX" // EmailJSの公開キー
       );
 
-      if (result.status === 200) {
-        setSubmitStatus("success");
-        setEmail("");
-        setMessage("");
-      } else {
-        setSubmitStatus("error");
-        setSubmitError({ code: "sendFailed" });
-      }
+      if (result.status !== 200) throw result;
+      setSubmitStatus("success");
+      setEmail("");
+      setMessage("");
     } catch (error) {
-      console.error("EmailJS Error:", error);
+      const failure = normalizeEmailJsError(error);
+      console.error(`EmailJS send failed (status ${failure.status ?? "unknown"}): ${failure.text}`);
       setSubmitStatus("error");
-      setSubmitError({
-        code: "sendFailed",
-        details: error instanceof Error ? error.message : undefined,
-      });
+      setSubmitError({ code: failure.code });
     } finally {
+      submissionInFlight.current = false;
       setIsSubmitting(false);
     }
   };
@@ -85,14 +86,31 @@ const ContactPage = () => {
         return t("正しいメールアドレスを入力してください。", "Please enter a valid email address.");
       case "messageRequired":
         return t("メッセージを入力してください。", "Please enter a message.");
+      case "rateLimited":
+        return t(
+          "送信回数の制限により送れませんでした。時間をおいて再度お試しいただくか、メールでご連絡ください。",
+          "The form has reached its sending limit. Please try again later or contact me by email."
+        );
+      case "networkError":
+        return t(
+          "通信エラーのため、送信の完了を確認できませんでした。接続を確認して再度お試しいただくか、メールでご連絡ください。",
+          "There was a connection problem, so it’s unclear whether your message was sent. Please check your connection and try again, or contact me by email."
+        );
       case "sendFailed":
-        return `${t("送信に失敗しました", "Your message could not be sent")}${
-          submitError.details ? `: ${submitError.details}` : t("。", ".")
-        }`;
+        return t(
+          "フォームから送信できませんでした。時間をおいて再度お試しいただくか、メールでご連絡ください。",
+          "Your message couldn’t be sent through the form. Please try again later or contact me by email."
+        );
       default:
         return "";
     }
   })();
+
+  const hasDeliveryError = submitError?.code === "sendFailed" ||
+    submitError?.code === "rateLimited" || submitError?.code === "networkError";
+  const fallbackMailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+    t("ポートフォリオからのお問い合わせ", "Portfolio inquiry")
+  )}&body=${encodeURIComponent(`${t("返信先", "Reply to")}: ${email}\n\n${message}`)}`;
 
   return (
     <>
@@ -163,6 +181,25 @@ const ContactPage = () => {
             {submitStatus === "error" && (
               <div id="contact-error" role="alert" className="p-4 bg-red-900 border border-red-500 rounded-md">
                 <p className="text-red-300">{errorMessage}</p>
+                {hasDeliveryError && (
+                  <div className="mt-3 space-y-2">
+                    <a
+                      href={fallbackMailto}
+                      className="inline-block rounded-md border border-red-300 px-3 py-2 font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-300"
+                    >
+                      {t("メールアプリを開く", "Open email app")}
+                    </a>
+                    <p className="text-sm text-red-100">
+                      {t(
+                        "入力内容を引き継いでメールアプリを開きます。内容を確認し、メールアプリ側で送信してください。",
+                        "This opens your email app with your message filled in. Review it and send it from there."
+                      )}
+                    </p>
+                    <p className="text-sm text-red-100 break-all">
+                      {t("宛先：", "To: ")}{CONTACT_EMAIL}
+                    </p>
+                  </div>
+                )}
               </div>
             )}
 
